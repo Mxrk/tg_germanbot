@@ -33,7 +33,7 @@ def rules(bot, update):
 dispatcher.add_handler(MessageHandler(Filters.status_update.new_chat_members, joinAlert))
 dispatcher.add_handler(CommandHandler('start', start))
 dispatcher.add_handler(CommandHandler('rules', rules))
-dispatcher.add_handler(CommandHandler('regel', rules))
+dispatcher.add_handler(CommandHandler('regeln', rules))
 dispatcher.add_handler(CommandHandler('greeting', greeting))
 
 updater.start_polling()
