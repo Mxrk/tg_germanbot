@@ -21,9 +21,10 @@ def joinAlert(bot, update):
 
 
 def rules(bot, update):
-    bot.send_message(update.message.chat_id, text="rules ...")
+    bot.send_message(update.message.chat_id, text="Hier sind die Regel, mit multileine usw.\nNoch mehr regel! Und noch mehr…")
 
 
 dispatcher.add_handler(MessageHandler(Filters.status_update.new_chat_members, joinAlert))
 dispatcher.add_handler(CommandHandler('start', start))
+dispatcher.add_handler(CommandHandler('rules', rules))
 updater.start_polling()
