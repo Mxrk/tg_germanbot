@@ -16,15 +16,24 @@ def start(bot, update):
 
 def joinAlert(bot, update):
     for member in update.message.new_chat_members:
-        bot.send_message(update.message.chat_id, text="Willkommen " + member.username)
-    # logger
+        greeting(bot, update)
 
+def greeting(bot, update):
+    with open('greeting', 'r', encoding='utf-8') as greeting_file:
+        greeting = greeting_file.read()
+        bot.send_message(update.message.chat_id, text=greeting)
 
+        
 def rules(bot, update):
-    bot.send_message(update.message.chat_id, text="Hier sind die Regel, mit multileine usw.\nNoch mehr regel! Und noch mehr…")
+    with open('rules','r', encoding='utf-8') as rules_file:
+        rules = rules_file.read()
+        bot.send_message(update.message.chat_id, text=rules)
 
 
 dispatcher.add_handler(MessageHandler(Filters.status_update.new_chat_members, joinAlert))
 dispatcher.add_handler(CommandHandler('start', start))
 dispatcher.add_handler(CommandHandler('rules', rules))
+dispatcher.add_handler(CommandHandler('regel', rules))
+dispatcher.add_handler(CommandHandler('greeting', greeting))
+
 updater.start_polling()
